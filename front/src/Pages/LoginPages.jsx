@@ -9,6 +9,7 @@ function LoginPages() {
 
     const GetProducts = async () => {
         const res = await axios.get('http://localhost:3001/api/v1/productos/')
+        console.log('res', res)
         setProducts(res.data)
     }
 
@@ -22,8 +23,8 @@ function LoginPages() {
         GetProducts()   
     }, [])
 
-    const productos = products.map(p =>
-        <div key={p.id} className="card" style={{ width: '100%' }}>
+    const productos = products.map((p, index) =>
+        <div key={index} className="card" style={{ width: '100%' }}>
             <img src={p.foto} className="card-img-top" alt="..." style={{ height: '18rem', border: '1px solid grey' }} />
             <div className="card-body">
                 <h5 className="card-title">{p.nombre}</h5>

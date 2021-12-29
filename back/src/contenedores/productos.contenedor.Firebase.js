@@ -43,14 +43,22 @@ class ContenedorCarritosFirebase {
             console.log('error', error);
         }
     }
-
+ 
     async newProduct(body) {
         try {
+            const {nombre, descripcion, foto, precio, stock, codigo} = body
 
-            const obj = await this.collections.add(body)
             const newProd = {
-                id: obj.id
+                _id: uuid4(),
+                nombre,
+                descripcion,
+                foto,
+                precio,
+                stock,
+                codigo 
             }
+            console.log('newProd', newProd)
+            const obj = await this.collections.add(newProd)
 
             return newProd
 

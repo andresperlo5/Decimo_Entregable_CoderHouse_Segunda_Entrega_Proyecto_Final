@@ -37,3 +37,7 @@
     transform: rotate(360deg);
   }
 }
+
+.tdInput{
+  width: 60px;
+}

@@ -26,7 +26,7 @@ function ProductoIdPages() {
     }, [])
 
     const producto =
-        <div key={product._id} className="card" style={{ width: '100%' }}>
+        <div key={product.id} className="card" style={{ width: '100%' }}>
             <img src={product.foto} className="card-img-top" alt="..." style={{ height: '18rem', border: '1px solid grey' }} />
             <div className="card-body">
                 <h5 className="card-title">{product.nombre}</h5>
@@ -34,7 +34,7 @@ function ProductoIdPages() {
                 <p className="card-text">{`Precio: ${product.precio}`}</p>
                 <div className='d-flex justify-content-around'>
                    
-                    <a href="#" className="btn btn-warning" id={product._id} onClick={handleSubmitCarrito}>Agregar Al Carrito</a>
+                    <a href="#" className="btn btn-warning" id={params.id} onClick={handleSubmitCarrito}>Agregar Al Carrito</a>
                 </div>
             </div>
         </div>

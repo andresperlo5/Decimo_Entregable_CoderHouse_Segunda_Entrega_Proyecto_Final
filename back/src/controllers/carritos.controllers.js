@@ -75,13 +75,15 @@ exports.addProductinTheCart = async (req, res) => {
     try {
 
         const idCart = req.params.id
+        console.log('idCart', idCart)
         const idProd = req.params.idProd
+        console.log('idProd', idProd)
 
         const cartEnc = await carritosDao.findOneId(idCart)
         const prodEnc = await productosDao.findOneId(idProd)
 
         cartEnc.producto.push(prodEnc)
-        const CartG = carritosDao.SaveCart(cartEnc, idCart)
+        const CartG = carritosDao.SaveCart(cartEnc, idCart, idProd)
         
 
         res.json({ CartG })

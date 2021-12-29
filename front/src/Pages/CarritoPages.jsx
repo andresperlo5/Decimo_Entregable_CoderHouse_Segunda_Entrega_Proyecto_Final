@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import NavbarLogueado from '../Components/NavbarLogueado';
 import axios from 'axios'
 import { useHistory } from 'react-router';
+import '../App.css'
 
 function Carrito() {
 
     const [products, setProducts] = useState([])
+    const [cantidad, setCantidad] = useState()
     const history = useHistory()
     const idCart = localStorage.getItem('idCart')
 
@@ -28,15 +30,18 @@ function Carrito() {
         GetProductsCart()
     }, [])
 
-    const productos = products.map(p =>
+    const productos = products.map((p, index) =>
 
-        <tr key={p._id}>
-            <th scope="row">{p.id}</th>
+        <tr key={index}>
+            <th scope="row"></th>
             <td>{p.nombre}</td>
             <td>{p.descripcion}</td>
             <td> <img src={p.foto} alt="" style={{ width: '2rem' }} /></td>
             <td>{p.precio}</td>
+            <td><input type="number" className='tdInput' onChange={(e) => setCantidad(e.target.value)}/></td>
             <td><button type="submit" className='btn btn-danger' id={p._id} onClick={handleDeleteOneProduct}>Eliminar</button></td>
+            <td><input type="number" className='tdInput' value={p.precio * cantidad}/></td>
+            
         </tr>
     )
 
@@ -53,7 +58,9 @@ function Carrito() {
                         <th scope="col">Descripcion</th>
                         <th scope="col">Foto</th>
                         <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
                         <th scope="col">Acciones</th>
+                        <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <tbody>

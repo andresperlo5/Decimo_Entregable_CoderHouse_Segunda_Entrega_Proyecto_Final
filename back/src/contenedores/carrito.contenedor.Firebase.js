@@ -77,9 +77,11 @@ class ContenedorCarritosFirebase {
         }
     }
 
-    async SaveCart(cartEnc, idCart) {
+    async SaveCart(cartEnc, idCart, idProd) {
         try {
-           
+           console.log('cartEnc', cartEnc)
+           console.log('idCart', idCart)
+           console.log('idProd', idProd)
            const saveCart = await this.collections.doc(idCart).set(cartEnc);
             return saveCart 
 
